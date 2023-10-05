@@ -1,0 +1,10 @@
+
+
+.addAttachmentButton {
+  border: 2px dashed #e4e4e4;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

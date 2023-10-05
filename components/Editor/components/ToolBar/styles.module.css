@@ -1,0 +1,19 @@
+
+.container {
+  margin-top: 32px;
+  display: flex;
+  gap: 10px;
+}
+
+.container button {
+  color: #909090;
+}
+
+.container button:hover {
+  background-color: #E4E4E4;
+  color: #202124;
+}
+
+.GIF {
+  position: relative;
+}

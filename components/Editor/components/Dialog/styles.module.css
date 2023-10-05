@@ -1,0 +1,53 @@
+.title {
+  padding: 0;
+  color: #202124;
+  font-weight: 700;
+  font-size: 23px;
+}
+
+.content {
+  padding: 0;
+}
+
+.contentInput {
+  margin-top: 30px;
+}
+
+.contentText {
+  color: #202124;
+  margin-top: 8px;
+}
+
+.actions{
+  margin-top: 30px;
+}
+
+.cancelButton {
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #909090 !important;
+  transition: none;
+  height: 48px;
+}
+
+.cancelButton:hover {
+  background-color: transparent;
+  color: #202124 !important;
+}
+
+.submitButton {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color:#f8d481;
+  color: #202124!important;
+  height: 48px;
+  transition: all 200ms;
+}
+
+.submitButton:hover {
+  background-color: #f8d481;
+  filter: brightness(97%);
+}

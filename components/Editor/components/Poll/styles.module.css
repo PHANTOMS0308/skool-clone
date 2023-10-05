@@ -1,0 +1,79 @@
+.container {
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 5px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.container button:hover {
+  color: #202124;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.header > p {
+  color: #202124;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.header > button {
+  color: #909090;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.header > button:hover {
+  text-decoration: underline;
+  color: #909090 !important;
+}
+
+.pollList {
+  width: 100%;
+}
+
+.pollItem  {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pollItem > button:hover {
+  background-color: #E4E4E4;
+}
+
+.footer {
+  margin-top: 8px;
+  color: #909090;
+}
+
+.footer > p {
+  font-size: 13px;
+}
+
+.footer > button {
+  font-size: 16px;
+  font-weight: 700;
+  color: #909090;
+  border: 1px solid rgb(228, 228, 228);
+  padding: 11px 24px;
+  height: 48px;
+  transition: none;
+}
+
+.footer > button:hover {
+  border: 1px solid rgb(228, 228, 228);
+  background-color: transparent;
+}
+
+.footer > button:disabled {
+  opacity: 50%;
+}
+

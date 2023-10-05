@@ -5,9 +5,9 @@ import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
-  subsets: ['latin'],
-  variable: '--font-roboto'
-})
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -17,9 +17,9 @@ export default function App({ Component, pageProps }: AppProps) {
           font-family: ${roboto.style.fontFamily};
         }
       `}</style>
-    <MuiThemeProvider>
-      <Component {...pageProps} />
-    </MuiThemeProvider>
+      <MuiThemeProvider>
+        <Component {...pageProps} />
+      </MuiThemeProvider>
     </>
   );
 }

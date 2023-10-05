@@ -1,107 +1,123 @@
 import Button from "@mui/material/Button";
-import {TextField} from "@mui/material";
-import {IconButton} from "@mui/material";
-import {v4 as uuid} from "uuid";
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { TextField } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { v4 as uuid } from "uuid";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
-import styles from './style.module.css'
-import {FC} from "react";
-import {pollOptionsArrType} from "@/interfaces/NewPostInput";
+import styles from "./style.module.css";
+import { FC } from "react";
+import { pollOptionsArrType } from "@/interfaces/NewPostInput";
 
 interface addPollPropsType {
-    pollOptions: pollOptionsArrType,
-    setPollOptions: (newPollOptions: pollOptionsArrType) => void,
-    setIsAddingPoll: (state: boolean) => void,
+  pollOptions: pollOptionsArrType;
+  setPollOptions: (newPollOptions: pollOptionsArrType) => void;
+  setIsAddingPoll: (state: boolean) => void;
 }
-const AddPoll:FC<addPollPropsType> = ({pollOptions, setPollOptions, setIsAddingPoll}) => {
-    const handleAddOption = () => {
-        const newPollOption = {
-            optionId: uuid(),
-            content: '',
-        }
-        const tempPollOptions = pollOptions;
-        tempPollOptions.push(newPollOption);
-        setPollOptions([...tempPollOptions])
-    }
 
-    const handleOptionCancelButtonClick = (e: React.MouseEvent<HTMLButtonElement>, optionId: string) => {
-        e.preventDefault();
-        let tempPollOptions = [...pollOptions];
-        tempPollOptions = tempPollOptions.filter(option => option.optionId !== optionId)
-        setPollOptions([...tempPollOptions])
-    }
+const AddPoll: FC<addPollPropsType> = ({
+  pollOptions,
+  setPollOptions,
+  setIsAddingPoll,
+}) => {
+  const handleAddOption = () => {
+    const newPollOption = {
+      optionId: uuid(),
+      content: "",
+    };
+    const tempPollOptions = pollOptions;
+    tempPollOptions.push(newPollOption);
+    setPollOptions([...tempPollOptions]);
+  };
 
-    const handleOptionInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => {
-        const newOptionContent = e.target.value;
-        let tempOptions = [...pollOptions];
-        tempOptions[index].content = newOptionContent;
-        setPollOptions([...tempOptions])
-    }
+  const handleOptionCancelButtonClick = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    optionId: string
+  ) => {
+    e.preventDefault();
+    let tempPollOptions = [...pollOptions];
+    tempPollOptions = tempPollOptions.filter(
+      (option) => option.optionId !== optionId
+    );
+    setPollOptions([...tempPollOptions]);
+  };
 
-    const handleRemoveClick = () => {
-        const optionArr = [
-            {
-                optionId: uuid(),
-                content: '',
-            },
-            {
-                optionId: uuid(),
-                content: '',
-            }
-        ]
-        setPollOptions(optionArr);
-        setIsAddingPoll(false);
-    }
+  const handleOptionInput = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index: number
+  ) => {
+    const newOptionContent = e.target.value;
+    let tempOptions = [...pollOptions];
+    tempOptions[index].content = newOptionContent;
+    setPollOptions([...tempOptions]);
+  };
 
-    return (
-        <div className={styles.pollContainer}>
-            <div className={styles.pollTitleContainer}>
-                <p>Poll</p>
-                <Button
-                    data-testid="poll-remove-btn"
-                    onClick={handleRemoveClick}
-                    size='small'
-                    color='info'
-                >
-                    Remove
-                </Button>
-            </div>
+  const handleRemoveClick = () => {
+    const optionArr = [
+      {
+        optionId: uuid(),
+        content: "",
+      },
+      {
+        optionId: uuid(),
+        content: "",
+      },
+    ];
+    setPollOptions(optionArr);
+    setIsAddingPoll(false);
+  };
 
-            <>
-                {pollOptions.map((option, index) => (
-                    <div
-                        key={option.optionId}
-                        className={styles.pollOptionContainer}
-                    >
-                        <TextField
-                            type='text'
-                            fullWidth={true}
-                            placeholder={`Option ${index + 1}`}
-                            value={option.content}
-                            onChange={(e) => handleOptionInput(e, index)}
-                        />
-                        {pollOptions.length > 2 ? (
-                            <IconButton
-                                className={styles.pollOptionDeleteButton}
-                                onClick={(e) => handleOptionCancelButtonClick(e, option.optionId)}
-                            >
-                                <CloseOutlinedIcon />
-                            </IconButton>
-                        ) : (<div></div>)}
-                    </div>
-                ))}
-            </>
+  return (
+    <div className={styles.pollContainer}>
+      <div className={styles.pollTitleContainer}>
+        <p>Poll</p>
+        <Button
+          data-testid="poll-remove-btn"
+          onClick={handleRemoveClick}
+          size="small"
+          color="info"
+        >
+          Remove
+        </Button>
+      </div>
 
-            <div>
-                <Button
-                    data-testid="poll-add-option-btn"
-                    variant="outlined"
-                    onClick={handleAddOption}
-                    className={styles.pollAddOptionButton}
-                >ADD OPTION</Button>
-            </div>
-        </div>
-    )
-}
+      <>
+        {pollOptions.map((option, index) => (
+          <div key={option.optionId} className={styles.pollOptionContainer}>
+            <TextField
+              type="text"
+              fullWidth={true}
+              placeholder={`Option ${index + 1}`}
+              value={option.content}
+              onChange={(e) => handleOptionInput(e, index)}
+            />
+            {pollOptions.length > 2 ? (
+              <IconButton
+                className={styles.pollOptionDeleteButton}
+                onClick={(e) =>
+                  handleOptionCancelButtonClick(e, option.optionId)
+                }
+              >
+                <CloseOutlinedIcon />
+              </IconButton>
+            ) : (
+              <div></div>
+            )}
+          </div>
+        ))}
+      </>
+
+      <div>
+        <Button
+          data-testid="poll-add-option-btn"
+          variant="outlined"
+          onClick={handleAddOption}
+          className={styles.pollAddOptionButton}
+        >
+          ADD OPTION
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 export default AddPoll;
